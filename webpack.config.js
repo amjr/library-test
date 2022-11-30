@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
   mode: "production",
-  entry: "./src/index.js",
+  entry: "./src/index",
   output: {
     path: path.resolve("build"),
     filename: "index.js",
@@ -10,7 +10,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.js$|jsx/, exclude: /node_modules/, loader: "babel-loader" },
       {
         test: /\.css$/,
         loader: "style-loader!css-loader"
@@ -19,5 +19,8 @@ module.exports = {
   },
   externals: {
     react: "react"
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   }
 };
